@@ -1,0 +1,41 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: version
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: version
+    spec:
+      containers:
+      - name: version
+        image: sonatconsulting/version:2.0
+        ports:
+        - containerPort: 5000
+          name: web
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 5000
+          initialDelaySeconds: 1
+          periodSeconds: 1
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 5000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: version
+spec:
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 5000
+  selector:
+    app: version
