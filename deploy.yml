@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: version
-        image: sonatconsulting/version:2.0
+        image: sonatconsulting/version:1.0
         ports:
         - containerPort: 5000
           name: web
