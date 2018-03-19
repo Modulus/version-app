@@ -33,7 +33,7 @@ kind: Service
 metadata:
   name: version
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 5000
