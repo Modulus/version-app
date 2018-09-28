@@ -18,7 +18,7 @@ logger.addHandler(ch)
 
 @app.route('/')
 def hello_world():
-    return 'Version: {} @ {}\n'.format(2.0, strftime("%Y-%m-%d %H:%M:%S", gmtime()))
+    return 'Version: {} @ {}\n'.format(3.0, strftime("%Y-%m-%d %H:%M:%S", gmtime()))
 
 
 if __name__ == '__main__':

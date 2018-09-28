@@ -25,6 +25,48 @@ spec:
   - version-gateway
   http:
   - match: 
+    - headers:
+        version:
+          exact: v2
+      uri:
+        prefix: /version
+    rewrite: 
+      uri: /
+    route:
+    - destination:
+        host: version
+        subset: v2
+        port:
+          number: 5000
+  - match: 
+    - headers:
+        version:
+          exact: v1
+      uri:
+        prefix: /version
+    rewrite: 
+      uri: /
+    route:
+    - destination:
+        host: version
+        subset: v1
+        port:
+          number: 5000
+  - match: 
+    - headers:
+        version:
+          exact: v3
+      uri:
+        prefix: /version
+    rewrite: 
+      uri: /
+    route:
+    - destination:
+        host: version
+        subset: v3
+        port:
+          number: 5000
+  - match: 
     - uri:
         prefix: /version
     rewrite: 
@@ -32,5 +74,25 @@ spec:
     route:
     - destination:
         host: version
+        subset: v1
         port:
-          number: 5000
+          number: 5000          
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: version
+spec:
+  host: version
+  subsets:
+  - name: v1
+    labels:
+      version: v1
+  - name: v2
+    labels:
+      version: v2
+  - name: v3
+    labels:
+      version: v3
+ 
