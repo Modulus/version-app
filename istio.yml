@@ -24,7 +24,12 @@ spec:
   gateways:
   - version-gateway
   http:
-  - route:
+  - match: 
+    - uri:
+        prefix: /version
+    rewrite: 
+      uri: /
+    route:
     - destination:
         host: version
         port:
