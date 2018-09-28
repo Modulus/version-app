@@ -1,8 +1,8 @@
 #!/bin/bash
 if [ -z  "$1" ]
 then
-    echo "You have to enter the ip address to check, with port"
-    echo "Usage example: check http://192.168.99.109:32087"
+    echo "You have to enter the ip address to check with version suffix"
+    echo "Usage example: check http://192.168.99.109/version"
     echo "\n"
 else
     echo "Listening on ip: $1\n"
