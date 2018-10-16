@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 import logging
 import sys
 from time import gmtime, strftime
@@ -18,7 +18,7 @@ logger.addHandler(ch)
 
 @app.route('/')
 def hello_world():
-    return 'Version: {} @ {}\n'.format(3.0, strftime("%Y-%m-%d %H:%M:%S", gmtime()))
+    return jsonify({"version": "1.0", "timestamp": strftime("%Y-%m-%d %H:%M:%S", gmtime())})
 
 
 if __name__ == '__main__':
