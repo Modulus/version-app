@@ -4,7 +4,7 @@ metadata:
   name: version-gateway
 spec:
   selector:
-    istio: ingressgateway # use Istio default gateway implementation
+    istio: ingressgateway 
   servers:
   - port:
       number: 80
@@ -20,7 +20,6 @@ metadata:
 spec:
   hosts:
   - "*"
-  #- "httpbin.example.com"
   gateways:
   - version-gateway
   http:
