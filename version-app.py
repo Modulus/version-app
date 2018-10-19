@@ -18,7 +18,9 @@ logger.addHandler(ch)
 
 @app.route('/')
 def hello_world():
-    return jsonify({"version": "1.0", "timestamp": strftime("%Y-%m-%d %H:%M:%S", gmtime())})
+    response =  jsonify({"version": "1.0", "timestamp": strftime("%Y-%m-%d %H:%M:%S", gmtime())})
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 
 if __name__ == '__main__':
