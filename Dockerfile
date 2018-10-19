@@ -1,4 +1,4 @@
-FROM python:3.6.3-alpine3.7
+FROM python:3.7.0-alpine3.8
 
 COPY version-app.py ./app.py
 
