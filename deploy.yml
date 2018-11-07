@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: version-v1
 spec:
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -34,7 +34,7 @@ kind: Deployment
 metadata:
   name: version-v2
 spec:
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -64,7 +64,7 @@ kind: Deployment
 metadata:
   name: version-v3
 spec:
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
