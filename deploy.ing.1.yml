@@ -1,5 +1,4 @@
 ---
-
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
@@ -39,21 +38,21 @@ spec:
   ports:
   - protocol: TCP
     port: 5000
-   # targetPort: 5000
+    targetPort: 5000
 ---
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: version-front
+  name: versionfront
 spec:
   replicas: 3
   template:
     metadata:
       labels:
-        app: version-front
+        app: versionfront
     spec:
       containers:
-      - name: version
+      - name: versionfront
         image: coderpews/version-app-front:1.0
         ports:
         - containerPort: 80
@@ -68,51 +67,43 @@ spec:
           httpGet:
             path: /
             port: 80  
----
+
+----
+
 apiVersion: v1
 kind: Service
 metadata:
-  name: version-front
+  name: versionfront
 spec:
   selector:
-    app: version-front
+    app: versionfront
   type: ClusterIP
   ports:
   - protocol: TCP
     port: 80
+    targetPort: 80
 
 ---
+
+
+
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: version-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - host: version.snadder.io
     http:
-      paths:        
+      paths:
       - path: /api
         backend:
           serviceName: version
-          servicePort: 5000     
-      - path: /
-        backend:
-          serviceName: version-front
-          servicePort: 80
-
-# ---
-# apiVersion: extensions/v1beta1
-# kind: Ingress
-# metadata:
-#   name: version-ingress-front
-# spec:
-#   rules:
-#   - host: version.snadder.io
-#     http:
-#       paths:
-             
+          servicePort: 5000
+      # - path: /
+      #     backend:
+      #       serviceName: version-front
+      #       servicePort: 80
 ---
 # apiVersion: extensions/v1beta1
 # kind: Ingress
