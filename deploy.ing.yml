@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: version
-        image: coderpews/version-app:3.0
+        image: rubblesnask/version-app:3.0
         ports:
         - containerPort: 5000
           name: web
@@ -53,8 +53,8 @@ spec:
         app: version-front
     spec:
       containers:
-      - name: version
-        image: coderpews/version-app-front:1.0
+      - name: version-app
+        image: rubblesnask/version-app-front:1.0
         ports:
         - containerPort: 80
           name: web
