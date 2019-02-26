@@ -45,14 +45,28 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: version-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: 
+  - host: version.snadder.io
     http:
       paths:
-      - path: /version
+      - path: /
         backend:
           serviceName: version
           servicePort: 5000
+---
+# apiVersion: extensions/v1beta1
+# kind: Ingress
+# metadata:
+#   name: version-ingress
+#   annotations:
+#     nginx.ingress.kubernetes.io/rewrite-target: /
+# spec:
+#   rules:
+#   - host: 
+#     http:
+#       paths:
+#       - path: /version
+#         backend:
+#           serviceName: version
+#           servicePort: 5000
