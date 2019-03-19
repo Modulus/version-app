@@ -16,12 +16,19 @@ ch.setFormatter(formatter)
 logger.addHandler(ch)
 
 
+version = "1.0"
+
+
 @app.route('/')
 def hello_world():
-    response =  jsonify({"version": "1.0", "timestamp": strftime("%Y-%m-%d %H:%M:%S", gmtime())})
+    return f"version: {version} timestamp: {strftime('%Y-%m-%d %H:%M:%S', gmtime())}"
+
+
+@app.route("/json")
+def version_json():
+    response =  jsonify({"version": f"{version}", "timestamp": strftime("%Y-%m-%d %H:%M:%S", gmtime())})
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
-
 
 if __name__ == '__main__':
     logger.info('Starting application')
