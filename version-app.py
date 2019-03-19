@@ -16,19 +16,27 @@ ch.setFormatter(formatter)
 logger.addHandler(ch)
 
 
-version = "1.0"
+version = "2.0"
+
+logger.info("Application is ready to receive traffic")
 
 
 @app.route('/')
 def hello_world():
-    return f"version: {version} timestamp: {strftime('%Y-%m-%d %H:%M:%S', gmtime())}"
+    logger.info("Returning non json data")
+    response = f"version: {version} timestamp: {strftime('%Y-%m-%d %H:%M:%S', gmtime())}"
+    logger.info(f"data: {response}")
+    return
 
 
 @app.route("/json")
 def version_json():
-    response =  jsonify({"version": f"{version}", "timestamp": strftime("%Y-%m-%d %H:%M:%S", gmtime())})
+    logger.info("Returning json data")
+    response = jsonify({"version": f"{version}", "timestamp": strftime("%Y-%m-%d %H:%M:%S", gmtime())})
+    logger.info(f"data: {response}")
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
+
 
 if __name__ == '__main__':
     logger.info('Starting application')
