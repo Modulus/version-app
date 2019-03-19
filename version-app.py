@@ -16,7 +16,7 @@ ch.setFormatter(formatter)
 logger.addHandler(ch)
 
 
-version = "2.0"
+version = "3.0"
 
 logger.info("Application is ready to receive traffic")
 
@@ -26,7 +26,7 @@ def hello_world():
     logger.info("Returning non json data")
     response = f"version: {version} timestamp: {strftime('%Y-%m-%d %H:%M:%S', gmtime())}"
     logger.info(f"data: {response}")
-    return
+    return response
 
 
 @app.route("/json")
