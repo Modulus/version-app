@@ -6,6 +6,9 @@ metadata:
   name: version
 spec:
   replicas: 3
+  selector:
+    matchLabels:
+      app: version
   template:
     metadata:
       labels:
