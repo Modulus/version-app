@@ -1,9 +1,9 @@
-FROM python:3.7.0-alpine3.8
+FROM python:3.8-alpine
 
 COPY version-app.py ./app.py
 
-RUN pip install pip --upgrade && pip install flask gunicorn
+RUN pip install pipenv && pipenv install
 
 
-CMD ["gunicorn", "--log-level=info", "--timeout=260", "--bind", "0.0.0.0:5000", "app:app"]
+CMD ["pipenv", "run", "gunicorn", "--log-level=info", "--timeout=260", "--bind", "0.0.0.0:5000", "app:app"]
 
