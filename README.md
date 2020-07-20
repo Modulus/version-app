@@ -1,3 +1,6 @@
+# Build requirements file
+pipenv lock  --requirements > requirements.txt
+
 # Using istio
 
 kubectl create ns version

@@ -30,6 +30,9 @@ i = Info("build", "Version of application")
 i.info({"version": version})
 
 
+logger.info("Starting prometheus server")
+start_http_server(8000)
+
 @app.route('/')
 def hello_world():
     start = time()
@@ -60,10 +63,6 @@ def version_json():
 
 
 if __name__ == '__main__':
-
-    logger.info("Starting prometheus server")
-    start_http_server(8000)
-
     logger.info('Starting application')
     app.run()
     logger.info('Application started')

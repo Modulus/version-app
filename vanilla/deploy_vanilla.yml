@@ -16,10 +16,12 @@ spec:
     spec:
       containers:
       - name: version
-        image: coderpews/version-app:4s.0
+        image: coderpews/version-app:4.0
         ports:
         - containerPort: 5000
           name: web
+        - containerPort: 8000
+          name: metrics
         livenessProbe:
           httpGet:
             path: /
