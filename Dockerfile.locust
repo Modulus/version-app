@@ -1,0 +1,7 @@
+
+FROM locustio/locust
+
+COPY locustfile.py ./locustfile.py
+
+
+ENTRYPOINT locust -f ./locustfile.py --headless -u 1000 -r 100 --host ${HOST}

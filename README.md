@@ -19,4 +19,4 @@ sh check_istio.sh http://xx.xx.xx.xx/version
 
 You must use python 2.7 to run locust (or python 3.4)
 pip install locustio
-locust --host=http:xxx:xx.xx.xx
+locust --host=http:xxx:xx.xx.xx 

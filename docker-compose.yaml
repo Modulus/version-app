@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  version:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment: 
+      HMM: "neivel"
+    networks:
+      - version-app
+  locust:
+    build:
+      context: ./
+      dockerfile: Dockerfile.locust
+    restart: always
+    environment: 
+      HOST: http://version:5000/
+    depends_on: 
+      - version      
+    networks:
+      - version-app     
+
+networks:
+  version-app:
+    driver: bridge

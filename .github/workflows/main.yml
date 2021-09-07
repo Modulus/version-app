@@ -24,3 +24,7 @@ jobs:
         run: docker build -t ghcr.io/modulus/version-app:latest -f Dockerfile .
       - name: Docker push
         run: docker push ghcr.io/modulus/version-app:latest 
+      - name: Docker build locust
+        run: docker build -t ghcr.io/modulus/version-locust:latest -f Dockerfile.locust .
+      - name: Docker push
+        run: docker push ghcr.io/modulus/version-locust:latest         
