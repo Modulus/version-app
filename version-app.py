@@ -17,7 +17,7 @@ ch.setFormatter(formatter)
 logger.addHandler(ch)
 
 
-version = "4.0"
+version = "1.0"
 
 logger.info("Application is ready to receive traffic")
 
