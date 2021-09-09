@@ -13,7 +13,6 @@ env:
   CARGO_TERM_COLOR: always
 jobs:
   package:
-    needs: build 
     runs-on: ubuntu-latest    
     steps:
       - uses: actions/checkout@v2
