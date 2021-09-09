@@ -10,7 +10,7 @@ class VersionBehaviour(HttpUser):
     @task
     def version_no_headers(self):
         with self.client.get("/", catch_response=True) as response:
-            if not "Version: 1.0" in response.text:
+            if not "Version: 2.0" in response.text:
                 response.failure("Expected response containing version: 1.0 Got wrong version response was: {}".format(response.content))
     # @task(2)
     # def version_v1_header(self):
