@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: version
-        image: coderpews/version-app:4.0
+        image: ghcr.io/modulus/version-app:1.0.0
         ports:
         - containerPort: 5000
           name: web
